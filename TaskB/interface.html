@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/reactdom@18/umd/react-dom.development.js"
+    ></script>
+  </head>
+<div id="root"></div>
+
+  <div id="pageContainer" class="w-full min-h-screen relative">
+    <div
+      id="navBar"
+      class="fixed top-0 w-full border- py-1 px-12 flex flex-row justify-between z-20 bg-white"
+    >
+      <div class="flex flex-row space-x-4 border- items-center">
+        <img src="logo.png" class="w-[73px] h-[80px]" />
+        <h1 class="text-3xl font-semibold text-[#CC6C6C]">PetsGo</h1>
+      </div>
+      <div
+        id=""
+        class="flex flex-row space-x-10 border- items-center text-base font-medium"
+      >
+        <a> Pets</a>
+        <a> Shelters</a>
+        <a> About us</a>
+        <a> Account</a>
+        <a> schen133@u.rochester.edu</a>
+      </div>
+    </div>
+
+    <div id="background" class="w-full min-h-screen absolute z-10">
+      <div class="w-full h-full bg-black opacity-10 absolute"></div>
+
+      <img src="bg.png" class="object-center h-[100%] z-0" />
+    </div>
+
+    <div id="content" class="flex w-full min-h-screen text-white z-10 absolute">
+      <div
+        id="stuff"
+        class="pt-[120px] px-[100px] flex flex-col space-y-[20px] w-full"
+      >
+        <h1 class="text-4xl font-semibold">Take us home!</h1>
+        <div id="boxes" class="flex flex-row space-x-[120px] w-full border-">
+          <div class="flex flex-col w-1/3">
+            <h1 class="text-2xl font-semibold mb- h-[70px]">Search</h1>
+
+            <form class="flex flex-col space-y-[10px]">
+              <label> Animal Type</label>
+              <input class="rounded-md" />
+              <label> Age Preference</label>
+
+              <input class="rounded-md" />
+            </form>
+          </div>
+
+          <div class="flex flex-col w-1/3">
+            <h1 class="text-2xl font-semibold mb- h-[70px]">
+              Report a homeless pet
+            </h1>
+
+            <form class="flex flex-col space-y-[10px]">
+              <label> Animal Type</label>
+              <input class="rounded-md" />
+              <label> Age Preference</label>
+
+              <input class="rounded-md" />
+            </form>
+          </div>
+          <div class="flex flex-col w-1/3">
+            <h1 class="text-2xl font-semibold mb- h-[70px]">
+              Claim a newly adopted pet
+            </h1>
+
+            <form class="flex flex-col space-y-[10px]">
+              <label> Animal Type</label>
+              <input class="rounded-md" />
+              <label> Age Preference</label>
+
+              <input class="rounded-md" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>
+

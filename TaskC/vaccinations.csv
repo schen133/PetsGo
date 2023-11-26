@@ -1,0 +1,6 @@
+vaccination_ID,medical_record_ID,vaccine_name,vaccine_brand,vaccination_date,next_due_date,administered_by
+1,1,Rabies,VaxiRab,2023-01-10,2024-01-10,Dr. Allen
+2,2,Distemper,Canix-D,2023-02-15,2024-02-15,Dr. Brown
+3,3,Parvovirus,ParvoShield,2023-03-20,2024-03-20,Dr. Clark
+4,4,Leptospirosis,LeptoVax,2023-04-25,2024-04-25,Dr. Davis
+5,5,Bordetella,BordetellaVax,2023-05-30,2024-05-30,Dr. Evans

@@ -1,0 +1,441 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/babel-standalone@6/babel.js"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script type="text/babel">
+      const { useState, useEffect } = React;
+      const Link = ReactRouterDOM.Link;
+      const Route = ReactRouterDOM.Route;
+
+      function NavBar() {
+        const [signIn, setSignIn] = useState(false);
+
+        const phpURL = "http://localhost:8000/authenticate.php";
+
+        const fetchForSessionStatus = async () => {
+          try {
+            const response = await axios.get(phpURL);
+            // response should be true or false
+            setSignIn(response.data);
+
+            console.log(response.data);
+          } catch (error) {
+            console.error("Error fetching for session status:", error);
+          }
+        };
+
+        useEffect(() => {
+          fetchForSessionStatus();
+          // console.log(signIn);
+        }, []);
+
+        return (
+          <div
+            id="navBar"
+            class="fixed top-0 w-full border- py-1 px-12 flex flex-row justify-between z-20 bg-white"
+          >
+            <div class="flex flex-row space-x-4 border- items-center">
+              <img src="logo.png" class="w-[73px] h-[80px]" />
+              <a class="text-3xl font-semibold text-[#CC6C6C] transition hover:scale-110">
+                {" "}
+                <Link to="/"> PetsGo</Link>{" "}
+              </a>
+            </div>
+            <div
+              id=""
+              class="flex flex-row space-x-10 border- items-center text-base font-medium"
+            >
+              <a className="hover:text-[#CC6C6C] transition hover:scale-110">
+                <Link to="/"> Home</Link>{" "}
+              </a>
+              <a className="hover:text-[#CC6C6C] transition hover:scale-110">
+                <Link to="/pets"> Pets</Link>{" "}
+              </a>
+              <a className="hover:text-[#CC6C6C] transition hover:scale-110">
+                <Link to="/aboutus"> About us</Link>{" "}
+              </a>{" "}
+              {signIn && (
+                <a className="hover:text-[#CC6C6C] transition hover:scale-110">
+                  <Link to="/user">Account</Link>{" "}
+                </a>
+              )}
+              {signIn ? (
+                <a className="hover:text-[#CC6C6C] transition hover:scale-110 hover:cursor-pointer">
+                  Logout
+                </a>
+              ) : (
+                <a className="hover:text-[#CC6C6C] transition hover:scale-110 hover:cursor-pointer">
+                  <Link to="/login">Login</Link>{" "}
+                </a>
+              )}
+            </div>
+          </div>
+        );
+      }
+
+      const Login = () => {
+        // TODO, handles log in request, do this in some other page
+        const phpURL = "http://localhost:8000/authenticate.php";
+
+        const [information, setInformation] = useState({
+          email: "",
+          password: "",
+        });
+
+        const handleInputChange = (event) => {
+          // console.log("changes");
+          event.preventDefault();
+          const { name, value } = event.target;
+          // console.log(name);
+          // console.log(value);
+          setInformation((prevAnimalInfor) => ({
+            ...prevAnimalInfor,
+            [name]: value,
+          }));
+        };
+
+        const handleLogin = async () => {
+          try {
+            const response = await axios.post(phpURL, information, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            console.log(response.data);
+            if (response.data.error) {
+              alert("Error, try loggin in again please!");
+              setInformation({
+                email: "",
+                password: "",
+              });
+            } else {
+              alert("logged in succesfully!");
+              window.location.href = "/TaskB/yoo.html#/";
+            }
+          } catch (error) {
+            alert("Error, try loggin in again please!");
+          }
+          console.log("this is log in button clicked");
+        };
+        return (
+          <div class="w-full min-h-screen flex flex-col items-center justify-center font-semibold text-2xl text-white">
+            <h1> Log in here</h1>
+            <form className="flex flex-col text-lg mt-2">
+              <label> Email</label>
+              <input
+                type="text"
+                name="email"
+                className="rounded-md text-black py-1 px-2 mb-2"
+                value={information.email}
+                onChange={handleInputChange}
+                placeholder="email"
+              />{" "}
+              <label> Password</label>
+              <input
+                type="text"
+                name="password"
+                className="rounded-md text-black py-1 px-2"
+                value={information.password}
+                onChange={handleInputChange}
+                placeholder="password"
+              />{" "}
+            </form>
+            <button
+              id="submitButton"
+              className="text-lg border- px-[20px] mt-2 bg-white text-black font-semibold rounded-xl py-1 transition hover:scale-110 hover:text-[#CC6C6C] border-1"
+              onClick={() => handleLogin()}
+            >
+              {" "}
+              Login{" "}
+            </button>{" "}
+          </div>
+        );
+      };
+
+      const AdoptionRequest = () => {
+        return <div> </div>;
+      };
+
+      function Home() {
+        const [hello, setHello] = useState(1);
+        const phpURL = "http://localhost:8000/animal_Insert.php";
+
+        const [animalInfor, setAnimalInfor] = useState({
+          age: "",
+          weight: "",
+          species: "",
+          pet_name: "",
+        });
+        const handleInputChange = (event) => {
+          // console.log("changes");
+          event.preventDefault();
+          const { name, value } = event.target;
+          // console.log(name);
+          // console.log(value);
+          setAnimalInfor((prevAnimalInfor) => ({
+            ...prevAnimalInfor,
+            [name]: value,
+          }));
+        };
+
+        const insertPet = async () => {
+          // console.log(animalInfor);
+          try {
+            const response = await axios.post(phpURL, animalInfor, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            alert(
+              "You have successfully reported an animal! Go ahead to the Pets section and see the animal you just reported."
+            );
+          } catch (error) {
+            alert(
+              "Error, something went wrong when trying to report a poor animal..."
+            );
+            setAnimalInfor({
+              age: "",
+              weight: "",
+              species: "",
+              pet_name: "",
+            });
+          }
+        };
+        function handleSubmit() {
+          insertPet();
+        }
+
+        return (
+          <div
+            id="stuff"
+            class="pt-[120px] px-[100px] flex flex-col space-y-[20px] w-full text-white"
+          >
+            <h1 class="text-4xl font-semibold">Take us home!</h1>
+            <div
+              id="boxes"
+              class="flex flex-row space-x-[120px] w-full border-"
+            >
+              <div class="flex flex-col w-1/3">
+                <h1 class="text-2xl font-semibold mb- h-[70px]">
+                  Report a homeless pet
+                </h1>
+
+                <form class="flex flex-col space-y-[10px]">
+                  <label> Animal Type</label>
+                  <input
+                    type="text"
+                    name="species"
+                    className="rounded-md text-black py-1 px-2"
+                    value={animalInfor.species}
+                    onChange={handleInputChange}
+                    placeholder="animal species"
+                  />{" "}
+                  <label> Name</label>
+                  <input
+                    type="text"
+                    name="pet_name"
+                    className="rounded-md text-black py-1 px-2"
+                    value={animalInfor.pet_name}
+                    onChange={handleInputChange}
+                    placeholder="pet's name"
+                  />{" "}
+                  <label> Age</label>
+                  <input
+                    type="number"
+                    name="age"
+                    className="rounded-md text-black py-1 px-2"
+                    value={animalInfor.age}
+                    onChange={handleInputChange}
+                    placeholder="age"
+                  />{" "}
+                  <label> Weight</label>
+                  <input
+                    type="number"
+                    name="weight"
+                    className="rounded-md text-black py-1 px-2"
+                    value={animalInfor.weight}
+                    onChange={handleInputChange}
+                    placeholder="weight"
+                  />{" "}
+                </form>
+
+                <button
+                  id="submitButton"
+                  className="border- w-1/2 mt-2 bg-white text-black font-semibold rounded-xl py-1 transition hover:scale-110 hover:text-[#CC6C6C] border-1"
+                  onClick={() => handleSubmit()}
+                >
+                  {" "}
+                  Report{" "}
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      const Pets = () => {
+        const [pets, setPets] = useState([]);
+
+        const [petId, setPetID] = useState("Pet");
+
+        const [result, setResult] = useState(null);
+
+        const phpURL = "http://localhost:8000/animal_Get.php";
+
+        const fetchForPets = async () => {
+          try {
+            const response = await axios.get(phpURL);
+            setPets(response.data);
+            // console.log(response.data);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        };
+
+        useEffect(() => {
+          fetchForPets();
+        }, [result]);
+
+        return (
+          <div
+            id="content"
+            className="flex flex-col border- w-full h-full items-center"
+          >
+            <div className="relative flex flex-col mt-[20vh] space-y-[20px] border- w-full h-full max-w-6xl">
+              {" "}
+              <h1 className="font-semibold text-3xl text-white tracking-wide">
+                {" "}
+                Buddies that need a home!{" "}
+              </h1>
+              <div className="w-full border- bg- backdrop-blur-md bg-white/30 rounded-2xl">
+                <div className="w-full  px-[20px] py-[20px] flex items-center">
+                  <div className="w-full border- text-black ">
+                    {" "}
+                    <div className="px- w-full ">
+                      {pets !== null && Array.isArray(pets) && (
+                        <div class="grid grid-cols-4 border- gap-4">
+                          {pets.map((pet) => (
+                            <PetCard pet={pet} />
+                          ))}
+                        </div>
+                      )}{" "}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      function PetCard({ pet }) {
+        const phpURL = "http://localhost:8000/animal_Adopt.php";
+
+        const handleAdopt = async ({ petID }) => {
+          try {
+            console.log("petID", petID);
+            const response = await axios.post(phpURL, petID, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            console.log(response.data);
+            if (response.data.error) {
+              alert(
+                "Error, try loggin adopting this buddy again later please!"
+              );
+            } else {
+              alert("adopted successfully!");
+              // window.location.href = "/TaskB/yoo.html#/";
+            }
+          } catch (error) {}
+        };
+
+        return (
+          <div
+            id="index"
+            className="col-span-1 border-[2px] rounded-2xl border-[#CC6C6C] flex flex-col px-4 py-4 "
+          >
+            <h1
+              id="name"
+              className="text-center text-xl tracking-wide font-semibold"
+            >
+              {pet.name}
+            </h1>
+            <div id="infor" className="flex flex-col mt-4 border- px-">
+              {" "}
+              <a> Age: {pet.age} yrs </a>
+              <a> Weight: {pet.weight} lbs </a>
+              <a> Species: {pet.species} </a>
+              <a> ShelterID: #{pet.shelter_ID} </a>
+            </div>
+            <button
+              onClick={() => handleAdopt({ petID: pet.animal_ID })}
+              className="py-1 border-[1px] rounded-2xl mt-2 hover:bg-gray-50 hover:scale-110 transition"
+            >
+              {" "}
+              Adopt{" "}
+            </button>
+          </div>
+        );
+      }
+
+      function AboutUs() {
+        return (
+          <div class="w-full min-h-screen flex flex-col items-center justify-center font-semibold text-2xl text-white">
+            <h1> This website is built by Sifeng Chen and Christy Kim</h1>
+
+            <h1> Our purpose is to help those animals find a home</h1>
+          </div>
+        );
+      }
+
+      function UserAccount() {
+        return <h1> Hello, this is user Account</h1>;
+      }
+
+      // Render the component to the DOM
+      ReactDOM.render(
+        <ReactRouterDOM.HashRouter>
+          <div id="pageContainer" class="w-full h-full relative bg-[#CC6C6C]">
+            <NavBar />
+            <div id="background" class="w-full h-full absolute z-10 ">
+              <div class="w-full h-full bg-black opacity-10 absolute"></div>
+              <img src="bg.png" class="object-cover w-full h-full z-0 fixed" />
+            </div>
+            <div class="absolute h-full w-full border-  flex z-10">
+              <Route path="/" exact component={Home} />
+              <Route path="/aboutus" exact component={AboutUs} />
+              <Route path="/pets" exact component={Pets} />
+              <Route path="/user" exact component={UserAccount} />
+              <Route path="/login" exact component={Login} />
+            </div>
+          </div>
+        </ReactRouterDOM.HashRouter>,
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+animal_ID,medical_record_ID,shelter_ID,age,weight,species,name
+1,1,1,3,5.25,Dog,Buddy
+2,2,2,2,1.75,Cat,Whiskers
+3,3,3,4,10.50,Rabbit,Thumper
+4,4,4,1,0.75,Bird,Tweetie
+5,5,5,2,3.00,Snake,Slytherin
+6,6,6,5,15.75,Horse,Shadowfax
+7,7,7,3,6.50,Hamster,Cupcake
+8,8,8,2,2.25,Turtle,Shelly
+9,9,9,1,0.50,Guinea Pig,Cocoa
+10,10,10,4,8.00,Fish,Bubbles

@@ -1,0 +1,13 @@
+owner_ID,past_record_ID,age,firstname,lastname,livingsituation,email,password
+1,1,30,John,Doe,Apartment,johndoe@email.com,password123
+2,2,25,Jane,Smith,House,janesmith@email.com,securepass456
+3,3,40,Michael,Johnson,Condo,michaeljohnson@email.com,letmein789
+4,4,35,Amy,Williams,House,amywilliams@email.com,password456
+5,5,28,David,Anderson,Apartment,davidanderson@email.com,securepass789
+6,6,21,Chris,Chen,Apartment,admin@gmail.com,admin123
+7,7,30,John,Doe,Apartment,johndoe@email.com,password123
+8,8,25,Jane,Smith,House,janesmith@email.com,securepass456
+9,9,40,Michael,Johnson,Condo,michaeljohnson@email.com,letmein789
+10,10,40,Michael,Johnson,Condo,michaeljohnson@email.com,letmein789
+
+

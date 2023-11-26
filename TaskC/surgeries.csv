@@ -1,0 +1,6 @@
+surgery_ID,medical_record_ID,surgery_date,surgery_type,surgeon_name,anesthesia_used,surgery_notes
+1,1,2023-08-01,Spay,Dr. Smith,Isoflurane,Successful, no complications.
+2,2,2023-07-15,Neuter,Dr. Johnson,Sevoflurane,Recovery was smooth.
+3,3,2023-09-10,Hip Surgery,Dr. Clark,Propofol,Hip dysplasia treatment.
+4,4,2023-06-20,Dental Extraction,Dr. Davis,Isoflurane,Removed two molars, recovery was normal.
+5,5,2023-08-25,Tumor Removal,Dr. Wilson,Sevoflurane,Benign tumor removed, animal is recovering well.

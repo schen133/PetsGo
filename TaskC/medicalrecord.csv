@@ -1,0 +1,11 @@
+medical_record_ID,microchipped,vaccination_status,medical_conditions,date_of_last_visit,notes
+1,0,Due,Allergies,2023-09-15,Regular allergy medication required.
+2,0,Due,Allergies,2023-09-15,Regular allergy medication required.
+3,1,Up to date,Arthritis,2023-11-01,Arthritis treatment ongoing.
+4,0,Overdue,None,2023-08-20,Needs vaccination update.
+5,1,Up to date,Diabetes,2023-10-10,Diabetes under control with diet.
+6,1,Up to date,Arthritis,2023-11-01,Arthritis treatment ongoing.
+7,0,Due,Allergies,2023-09-15,Regular allergy medication required.
+8,1,Up to date,Arthritis,2023-11-01,Arthritis treatment ongoing.
+9,0,Overdue,None,2023-08-20,Needs vaccination update.
+10,1,Up to date,Diabetes,2023-10-10,Diabetes under control with diet.

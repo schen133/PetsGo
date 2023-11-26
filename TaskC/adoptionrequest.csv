@@ -1,0 +1,6 @@
+adoptionRequest_ID,animal_ID,owner_ID,request_date,request_status
+1,1,1,2023-11-01,Pending
+2,2,2,2023-11-02,Approved
+3,3,3,2023-11-03,Denied
+4,4,4,2023-11-04,Pending
+5,5,5,2023-11-05,Approved

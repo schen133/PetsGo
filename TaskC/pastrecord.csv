@@ -1,0 +1,11 @@
+past_record_ID,start_date,end_date,description,outcome,related_animal_ID
+1,2023-01-01,2023-06-01,Rescued from abandoned house,Adopted,1
+2,2023-02-15,2023-03-10,Temporary foster care during owners illness,Returned to owner,2
+3,2023-04-01,2023-07-01,Found wandering in a park,In shelter,3
+4,2023-01-20,2023-02-15,Recovery from surgery,Fully recovered,4
+5,2023-03-05,2023-05-01,Behavioral training for aggression,Improved behavior,5
+6,2023-01-01,2023-06-01,Rescued from abandoned house,Adopted,1
+7,2023-02-15,2023-03-10,Temporary foster care during owners illness,Returned to owner,2
+8,2023-04-01,2023-07-01,Found wandering in a park,In shelter,3
+9,2023-01-20,2023-02-15,Recovery from surgery,Fully recovered,4
+10,2023-03-05,2023-05-01,Behavioral training for aggression,Improved behavior,5
